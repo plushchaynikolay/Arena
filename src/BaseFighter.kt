@@ -14,8 +14,11 @@ abstract class BaseFighter(val name: String) : Fighter {
     override fun isAlive() = health > 0.0
     override fun getFighterName() = name
 
-    override fun defend(damage: Double) {
-        this.health = health - damage
+    override fun defend(attack: Attack) {
+        this.health = health - attack.damage
+    }
+    override fun defend(attack: PoisonAttack) {
+        this.health = health - attack.damage * 1.2
     }
 
     override fun fight(enemy: Fighter) {
