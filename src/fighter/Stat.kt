@@ -1,10 +1,17 @@
+package fighter
+
+import format
+
 class Stat(
         private val maxHealth: Double,
         private val maxStamina: Double,
         private val maxMana: Double,
         val poisonResist: Double,
         val physicResist: Double,
-        val manaResist: Double
+        val manaResist: Double,
+        val power: Double,
+        val protection: Double,
+        val willpower: Double
 ) {
     var health: Double = maxHealth
         set(value) {

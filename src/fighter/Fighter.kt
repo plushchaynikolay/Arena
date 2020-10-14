@@ -1,3 +1,5 @@
+package fighter
+
 interface Fighter {
     val name: String
     val stat: Stat

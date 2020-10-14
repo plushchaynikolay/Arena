@@ -1,3 +1,8 @@
+import fighter.Fighter
+import fighter.Mage
+import fighter.Rouge
+import fighter.Warrior
+
 fun main() {
     var option: String? = null
     while (option == null) {
