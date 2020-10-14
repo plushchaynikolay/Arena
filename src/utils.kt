@@ -1,0 +1,1 @@
+fun format(d: Double): String = String.format("%.2f", d)

@@ -1,39 +1,25 @@
-abstract class BaseFighter(val name: String) : Fighter {
-    protected abstract val maxHealth: Double
-    protected abstract val maxStamina: Double
-    protected abstract val maxMana: Double
+abstract class BaseFighter(override val name: String) : Fighter {
+    abstract fun attack(): Attack
+    abstract override val stat: Stat
 
-    protected abstract var health: Double
-    protected abstract var stamina: Double
-    protected abstract var mana: Double
+    override fun toString() = "$name ($stat)"
+    override fun isAlive() = stat.health > 0.0
 
-    override fun printStats() {
-        println("${name}(HP:${health}/${maxHealth} SP:${stamina}/${maxStamina} MP:${mana}/${maxMana})")
+    //    Делегирование
+    override fun rest() = stat.rest()
+    override fun reset() = stat.reset()
+
+    //    Шаблонный метод
+    override fun fight(enemy: Fighter) {
+        if (isAlive() && stat.stamina > 0) {
+            //  Вызовы виртуальных методов
+            val attack: Attack = attack()
+            enemy.defend(attack)
+            println("$name deals ${format(attack.damage)} damage to ${enemy.name}")
+        }
     }
-
-    override fun isAlive() = health > 0.0
-    override fun getFighterName() = name
 
     override fun defend(attack: Attack) {
-        this.health = health - attack.damage
-    }
-    override fun defend(attack: PoisonAttack) {
-        this.health = health - attack.damage * 1.2
-    }
-
-    override fun fight(enemy: Fighter) {
-        if (isAlive() && stamina > 0) {
-            val damage: Double = attack()
-            println("${name} deals ${damage} damage to ${enemy.getFighterName()}")
-            enemy.defend(damage)
-        }
-        rest()
-    }
-
-    abstract fun attack(): Double
-
-    fun rest() {
-        this.stamina = if (maxStamina - stamina > 15) stamina + 15 else maxStamina
-        this.mana = if (maxMana - mana > 15) mana + 15 else maxMana
+        this.stat.health = stat.health - attack.calculate(this)
     }
 }

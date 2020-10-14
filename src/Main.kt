@@ -1,28 +1,22 @@
 fun main() {
-    val name: String
-    var line: String?
-    while (true) {
+    var option: String? = null
+    while (option == null) {
         print("Enter fighter's name: ")
-        line = readLine()
-        if (line != null) {
-            name = line
-            break
-        }
+        option = readLine()
     }
+
+    val name: String = option
     val fighter1: Fighter
-    var option: Fighter?
+
     while (true) {
         print("Choose fighter's class (w, r, m): ")
-        option = when (readLine()) {
+        fighter1 = when (readLine()) {
             "w" -> Warrior(name)
             "r" -> Rouge(name)
             "m" -> Mage(name)
-            else -> null
+            else -> continue
         }
-        if (option != null) {
-            fighter1 = option
-            break
-        }
+        break
     }
 
     val fighter2: Fighter = listOf(
@@ -32,12 +26,15 @@ fun main() {
     ).random()
 
     while (fighter1.isAlive() && fighter2.isAlive()) {
-        fighter1.printStats()
-        fighter2.printStats()
+        println(fighter1)
+        println(fighter2)
+        //  Полиморфные вызовы
         fighter1.fight(fighter2)
         fighter2.fight(fighter1)
+        fighter1.rest()
+        fighter2.rest()
         readLine()
     }
     val winner: Fighter = if (fighter1.isAlive()) fighter1 else fighter2
-    println("${winner.getFighterName()} is a Winner!")
+    println("${winner.name} is a Winner!")
 }

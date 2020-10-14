@@ -1,7 +1,9 @@
 interface Fighter {
+    val name: String
+    val stat: Stat
     fun fight(enemy: Fighter)
-    fun defend(damage: Double)
-    fun printStats()
+    fun defend(attack: Attack)
     fun isAlive(): Boolean
-    fun getFighterName(): String
+    fun rest()
+    fun reset()
 }

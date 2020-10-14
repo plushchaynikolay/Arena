@@ -1,15 +1,12 @@
 class Rouge(name: String) : BaseFighter(name) {
-    override val maxHealth: Double = 100.0
-    override val maxStamina: Double = 150.0
-    override val maxMana: Double = 10.0
+    override val stat = Stat(
+            100.0, 150.0, 10.0,
+            0.8, 1.0, 1.2
+    )
 
-    override var health = maxHealth
-    override var stamina = maxStamina
-    override var mana = maxMana
-
-    override fun attack(): Double {
-        val damage: Double = stamina * Math.random()
-        this.stamina -= damage
-        return damage
+    override fun attack(): PoisonAttack {
+        val damage: Double = stat.stamina * Math.random()
+        this.stat.stamina -= damage
+        return PoisonAttack(damage)
     }
 }
