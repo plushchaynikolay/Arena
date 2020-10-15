@@ -2,17 +2,26 @@ package fighter
 
 import format
 
-class Stat(
+interface IStat {
+    val poisonResist: Double
+    val physicResist: Double
+    val manaResist: Double
+    val power: Double
+    val protection: Double
+    val willpower: Double
+}
+
+open class Stat(
         private val maxHealth: Double,
         private val maxStamina: Double,
         private val maxMana: Double,
-        val poisonResist: Double,
-        val physicResist: Double,
-        val manaResist: Double,
-        val power: Double,
-        val protection: Double,
-        val willpower: Double
-) {
+        override val poisonResist: Double,
+        override val physicResist: Double,
+        override val manaResist: Double,
+        override val power: Double,
+        override val protection: Double,
+        override val willpower: Double
+) : IStat {
     var health: Double = maxHealth
         set(value) {
             field = if (value < maxHealth) value else maxHealth
