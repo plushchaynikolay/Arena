@@ -1,3 +1,4 @@
+import equipment.ItemFactory
 import fighter.Fighter
 import fighter.Mage
 import fighter.Rouge
@@ -24,12 +25,15 @@ fun main() {
         break
     }
 
+    fighter1.equip(ItemFactory().get())
+
     val fighter2: Fighter = listOf(
             Warrior("Gregor"),
             Rouge("Patric"),
             Mage("Shone")
     ).random()
 
+    println(fighter1.equipment)
     while (fighter1.isAlive() && fighter2.isAlive()) {
         println(fighter1)
         println(fighter2)

@@ -1,3 +1,5 @@
+package equipment
+
 import fighter.IStat
 
 class Item(

@@ -40,7 +40,7 @@ open class Stat(
         this.mana = maxMana
     }
 
-    override fun toString() = ("(HP:${format(health)}/$maxHealth "
+    override fun toString() = ("HP:${format(health)}/$maxHealth "
             + "SP:${format(stamina)}/$maxStamina "
-            + "MP:${format(mana)}/$maxMana)")
+            + "MP:${format(mana)}/$maxMana")
 }

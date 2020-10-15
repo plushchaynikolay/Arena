@@ -1,12 +1,14 @@
 package fighter
 
+import equipment.Equipment
+
 class Mage(name: String) : BaseFighter(name) {
     override val stat = Stat(
             50.0, 10.0, 150.0,
             0.2, -0.2, 0.0,
             0.0, 0.0, 0.7
     )
-
+    override val equipment = Equipment(stat)
     override fun attack(): MagicAttack {
         val damage: Double = stat.mana * stat.willpower * Math.random()
         this.stat.mana -= damage

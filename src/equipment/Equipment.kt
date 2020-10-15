@@ -1,8 +1,10 @@
+package equipment
+
 import fighter.IStat
 import fighter.Stat
 
 class Equipment(private val stat: Stat) : IStat {
-    private val equipmentList: MutableList<Item> = mutableListOf()
+    val equipmentList: MutableList<Item> = mutableListOf()
     override val poisonResist: Double
         get() {
             var acc = 0.0

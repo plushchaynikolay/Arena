@@ -1,10 +1,17 @@
 package fighter
 
+import equipment.Equipment
+import equipment.Item
 import format
 
 abstract class BaseFighter(override val name: String) : Fighter {
     abstract fun attack(): Attack
     abstract override val stat: Stat
+
+    abstract override val equipment: Equipment
+    override fun equip(item: Item) {
+        equipment.equipmentList.add(item)
+    }
 
     override fun toString() = "$name ($stat)"
     override fun isAlive() = stat.health > 0.0
