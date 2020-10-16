@@ -9,6 +9,7 @@ class Rouge(name: String) : BaseFighter(name) {
             7.0, 0.0, 3.0
     )
     override val equipment = Equipment(stat)
+    //    Реализация фабричного метод
     override fun attack(): PoisonAttack {
         val damage: Double = (stat.stamina * stat.power + stat.mana * stat.willpower) * Math.random()
         this.stat.stamina -= damage * stat.power

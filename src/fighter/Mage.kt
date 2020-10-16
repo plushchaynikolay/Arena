@@ -9,6 +9,7 @@ class Mage(name: String) : BaseFighter(name) {
             0.0, 0.0, 0.7
     )
     override val equipment = Equipment(stat)
+    //    Реализация фабричного метод
     override fun attack(): MagicAttack {
         val damage: Double = stat.mana * stat.willpower * Math.random()
         this.stat.mana -= damage

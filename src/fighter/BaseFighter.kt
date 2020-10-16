@@ -5,6 +5,7 @@ import equipment.Item
 import format
 
 abstract class BaseFighter(override val name: String) : Fighter {
+    //    Фабричный метод
     abstract fun attack(): Attack
     abstract override val stat: Stat
 

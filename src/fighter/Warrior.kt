@@ -9,6 +9,7 @@ class Warrior(name: String) : BaseFighter(name) {
             0.5, 0.3, 0.0
     )
     override val equipment = Equipment(stat)
+    //    Реализация фабричного метод
     override fun attack(): PhysicAttack {
         val damage: Double = stat.stamina * stat.power * Math.random()
         this.stat.stamina -= damage

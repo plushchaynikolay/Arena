@@ -11,7 +11,6 @@ class ItemFactory {
             Item("Magic Mirror", 0.0, 0.0, 0.0, 0.0, 0.0, 0.2)
     )
 
-//    фабричный метод
     fun get(): Item? {
         val item = itemList.randomOrNull()
         if (item != null)
