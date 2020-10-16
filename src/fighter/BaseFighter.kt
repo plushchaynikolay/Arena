@@ -9,8 +9,10 @@ abstract class BaseFighter(override val name: String) : Fighter {
     abstract override val stat: Stat
 
     abstract override val equipment: Equipment
-    override fun equip(item: Item) {
-        equipment.equipmentList.add(item)
+    override fun equip(item: Item?): BaseFighter {
+        if (item != null)
+            equipment.equipmentList.add(item)
+        return this
     }
 
     override fun toString() = "$name ($stat)"

@@ -44,7 +44,11 @@ class Equipment(private val stat: Stat) : IStat {
 
     override fun toString(): String {
         var acc = ""
-        equipmentList.forEachIndexed { index, item -> acc += "$index) $item\n" }
+        equipmentList.forEachIndexed { index, item ->
+            acc += "${index + 1}) $item"
+            if (index < equipmentList.size - 1)
+                acc += "\n"
+        }
         return acc
     }
 }

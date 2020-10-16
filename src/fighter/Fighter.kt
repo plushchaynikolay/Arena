@@ -12,5 +12,5 @@ interface Fighter {
     fun isAlive(): Boolean
     fun rest()
     fun reset()
-    fun equip(item: Item)
+    fun equip(item: Item?): Fighter
 }
