@@ -3,13 +3,14 @@ package fighter
 import format
 
 abstract class Attack(val damage: Double) {
+    //    Посетитель
     abstract fun calculate(target: Fighter): Double
 }
 
 class PhysicAttack(damage: Double) : Attack(damage) {
     override fun calculate(target: Fighter): Double {
         println("${target.name} has ${format(target.stat.physicResist * 100)}% physical resist")
-        return damage * (1.0 - target.stat.physicResist)
+        return damage * (1.0 - target.equipment.physicResist)
     }
 }
 

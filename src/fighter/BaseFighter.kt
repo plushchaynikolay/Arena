@@ -34,8 +34,9 @@ abstract class BaseFighter(override val name: String) : Fighter {
     }
 
     override fun defend(attack: Attack) {
+        //    Посетитель
         val damage: Double = attack.calculate(this)
-        val reflectedDamage: Double = if (stat.protection < 1) damage * stat.protection else damage
+        val reflectedDamage: Double = if (equipment.protection < 1) damage * equipment.protection else damage
         println("$name reflects damage $reflectedDamage out of $damage")
         this.stat.health = stat.health - (damage - reflectedDamage)
     }
